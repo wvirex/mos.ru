@@ -206,6 +206,10 @@ button {
     margin-bottom: 8px;
 }
 
+.field + .field {
+    margin-top: 10px;
+}
+
 .field-label {
     display: block;
     font-size: 14px;
@@ -382,18 +386,30 @@ button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 9px;
+    gap: 8px;
     cursor: default;
 }
 
 .signature-btn::before {
     content: "";
     width: 13px;
-    height: 8px;
+    height: 10px;
     border: 1.6px solid currentColor;
-    border-radius: 999px;
+    border-radius: 2px;
+    position: relative;
     transform: rotate(-35deg);
-    opacity: 0.9;
+    opacity: 0.92;
+}
+
+.signature-btn::after {
+    content: "";
+    width: 5px;
+    height: 4px;
+    border: 1.6px solid currentColor;
+    border-left: none;
+    border-radius: 0 2px 2px 0;
+    transform: rotate(-35deg) translate(-2px, -2px);
+    opacity: 0.92;
 }
 
 .note {
