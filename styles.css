@@ -377,6 +377,14 @@ button {
     font-weight: 700;
     line-height: 1;
     opacity: 1;
+    image-rendering: pixelated;
+    transform: translateZ(0) scale(1.12);
+    filter: contrast(1.35) saturate(0.8);
+    text-shadow:
+        1px 0 0 currentColor,
+        0 1px 0 currentColor,
+        -1px 0 0 currentColor,
+        0 -1px 0 currentColor;
 }
 
 .icon-gos {
