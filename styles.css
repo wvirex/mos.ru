@@ -368,75 +368,14 @@ button {
     align-items: center;
     justify-content: center;
     cursor: default;
+    overflow: hidden;
 }
 
-.icon-mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    line-height: 1;
-    opacity: 1;
-    image-rendering: pixelated;
-    transform: translateZ(0) scale(1.12);
-    filter: contrast(1.35) saturate(0.8);
-    text-shadow:
-        1px 0 0 currentColor,
-        0 1px 0 currentColor,
-        -1px 0 0 currentColor,
-        0 -1px 0 currentColor;
-}
-
-.icon-gos {
-    color: #e2263a;
-    font-size: 8px;
-    border: 1px solid #d6dbe5;
-    border-radius: 999px;
-    width: 25px;
-    height: 25px;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-}
-
-.icon-check {
-    color: #25b34b;
-    font-size: 17px;
-    width: 24px;
-    height: 24px;
-    border-radius: 999px;
-    border: 2px solid #79d17f;
-    background: #eef9ef;
-}
-
-.icon-id {
-    color: #2b2f36;
-    font-size: 10px;
-    background: #ffde3b;
-    border-radius: 9px;
-    border: 1px solid #d4b71e;
-    padding: 1px 5px 2px;
-}
-
-.icon-lines {
-    width: 23px;
-    height: 15px;
-    background:
-        linear-gradient(to bottom,
-            #3f86f2 0 3px,
-            transparent 3px 6px,
-            #3f86f2 6px 9px,
-            transparent 9px 12px,
-            #3f86f2 12px 15px);
-    transform: skewX(-20deg);
-}
-
-.icon-a {
-    color: #dc2f2f;
-    font-size: 30px;
-    font-weight: 600;
-    transform: translateY(1px);
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
+.auth-icon-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
 }
 
 .ghost-link {
