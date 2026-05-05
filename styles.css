@@ -6,8 +6,8 @@
     --color-muted: #9ca3af;
     --color-border: #e5e7eb;
     --color-border-input: #d1d5db;
-    --color-primary: #2563eb;
-    --color-primary-hover: #1d4ed8;
+    --color-primary: #0f4bd6;
+    --color-primary-hover: #0b3fb6;
     --color-link: #2563eb;
     --color-error: #dc2626;
     --color-success: #16a34a;
@@ -203,13 +203,13 @@ button {
 
 /* FIELDS */
 .field {
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 
 .field-label {
     display: block;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     color: #111;
     margin-bottom: 10px;
 }
@@ -351,7 +351,7 @@ button {
 
 .ghost-link {
     width: max-content;
-    margin: 8px auto 18px;
+    margin: 8px auto 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -381,7 +381,21 @@ button {
     color: #111827;
     font-size: 15px;
     font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
     cursor: default;
+}
+
+.signature-btn::before {
+    content: "";
+    width: 13px;
+    height: 8px;
+    border: 1.6px solid currentColor;
+    border-radius: 999px;
+    transform: rotate(-35deg);
+    opacity: 0.9;
 }
 
 .note {
