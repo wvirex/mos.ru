@@ -63,9 +63,9 @@ button {
     grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
     min-height: 100vh;
     width: 100%;
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 48px 56px;
+    max-width: 1360px;
+    margin: 0;
+    padding: 36px 56px 36px 28px;
     gap: 72px;
 }
 
@@ -81,49 +81,53 @@ button {
 .logo {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 48px;
     color: #111;
     text-decoration: none;
-    margin-bottom: 40px;
+    line-height: 1;
+    margin-bottom: 44px;
 }
 
 .logo:hover { text-decoration: none; }
 
-.logo-mark {
+.logo-mos {
+    color: #111827;
+    letter-spacing: -0.5px;
+    font-size: 48px;
+    font-weight: 500;
+}
+
+.logo-id {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    background: var(--color-primary);
+    background: #e11d48;
     color: #fff;
-    border-radius: 8px;
-    font-size: 18px;
+    padding: 8px 14px;
+    border-radius: 0;
+    font-size: 44px;
     font-weight: 700;
-    letter-spacing: 0;
-}
-
-.logo-text {
-    color: #111;
-    letter-spacing: -0.3px;
+    line-height: 1;
 }
 
 .left-title {
-    font-size: 26px;
+    font-size: 44px;
     font-weight: 700;
-    line-height: 1.25;
+    line-height: 1.15;
     color: #111;
-    margin-bottom: 12px;
-    letter-spacing: -0.3px;
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+    max-width: 740px;
 }
 
 .left-subtitle {
-    font-size: 15px;
-    color: var(--color-text-secondary);
-    margin-bottom: 36px;
-    max-width: 380px;
+    font-size: 40px;
+    color: #111827;
+    margin-bottom: 42px;
+    max-width: 740px;
+    line-height: 1.2;
 }
 
 
@@ -137,7 +141,7 @@ button {
 .help-title {
     color: #4b5563;
     margin-bottom: 8px;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
 }
 
@@ -152,12 +156,12 @@ button {
 
 .help-list a {
     color: var(--color-link);
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .copyright {
     color: var(--color-muted);
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.5;
 }
 
@@ -303,22 +307,6 @@ button {
     opacity: 0.85;
 }
 
-.login-preview {
-    margin-top: 16px;
-    width: 100%;
-    pointer-events: none;
-    user-select: none;
-}
-
-.login-preview-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 482 / 164;
-    object-fit: contain;
-    border-radius: 8px;
-}
-
 /* STATUS */
 .status {
     margin-top: 16px;
@@ -366,6 +354,29 @@ button {
         padding: 24px;
     }
 
+    .logo {
+        font-size: 34px;
+    }
+
+    .logo-mos {
+        font-size: 34px;
+    }
+
+    .logo-id {
+        font-size: 30px;
+        padding: 6px 10px;
+    }
+
+    .left-title {
+        font-size: 30px;
+        max-width: 100%;
+    }
+
+    .left-subtitle {
+        font-size: 24px;
+        max-width: 100%;
+    }
+
     .left-bottom {
         margin-top: 20px;
     }
@@ -378,11 +389,7 @@ button {
 
 @media (min-width: 1400px) {
     .page {
-        max-width: 1320px;
-        gap: 80px;
-    }
-
-    .left-subtitle {
-        max-width: 430px;
+        max-width: 1500px;
+        gap: 88px;
     }
 }
