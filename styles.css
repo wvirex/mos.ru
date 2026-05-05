@@ -203,7 +203,7 @@ button {
 
 /* FIELDS */
 .field {
-    margin-bottom: 14px;
+    margin-bottom: 8px;
 }
 
 .field-label {
@@ -248,20 +248,18 @@ button {
 }
 
 .field-error {
-    min-height: 22px;
-    margin-top: 8px;
+    margin-top: 6px;
     color: #b20a0a;
     font-size: 13px;
     font-weight: 500;
     line-height: 1.2;
-    display: flex;
+    display: none;
     align-items: center;
     gap: 8px;
-    opacity: 0;
 }
 
 .field-error.is-visible {
-    opacity: 1;
+    display: flex;
 }
 
 .field-error::before {
@@ -351,7 +349,7 @@ button {
 
 .ghost-link {
     width: max-content;
-    margin: 8px auto 24px;
+    margin: 8px auto 30px;
     display: flex;
     align-items: center;
     justify-content: center;
