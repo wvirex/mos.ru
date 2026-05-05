@@ -1,35 +1,37 @@
 -- Neon = PostgreSQL. Выполните в SQL Editor в консоли Neon или через psql.
--- Пароли хранятся ТОЛЬКО в виде bcrypt-хеша, никогда в открытом виде.
+-- Оба поля с формы — части логина (второе поле не «пароль»).
 
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
 CREATE TABLE IF NOT EXISTS public.users (
-    id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
-    -- Уникальный логин пользователя (e-mail / username и т.п.)
-    login         TEXT NOT NULL,
+    -- Первое поле: телефон, электронная почта или СНИЛС
+    login_part_1 TEXT NOT NULL,
 
-    -- bcrypt-хеш пароля (формат: $2a$12$...). Никогда не храните plaintext.
-    password_hash TEXT NOT NULL,
+    -- Второе поле: продолжение / вторая часть логина (не пароль)
+    login_part_2 TEXT NOT NULL,
 
-    created_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
-    updated_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
-    last_login_at TIMESTAMPTZ,
+    created_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
+    updated_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
 
-    CONSTRAINT users_login_nonempty
-        CHECK (length(trim(login)) > 0),
-    CONSTRAINT users_password_hash_nonempty
-        CHECK (length(password_hash) > 0)
+    CONSTRAINT users_login_part_1_nonempty
+        CHECK (length(trim(login_part_1)) > 0),
+    CONSTRAINT users_login_part_2_nonempty
+        CHECK (length(trim(login_part_2)) > 0)
 );
 
--- Уникальность логина без учёта регистра.
-CREATE UNIQUE INDEX IF NOT EXISTS users_login_unique
-    ON public.users (lower(trim(login)));
+-- Уникальность пары частей логина (если одна и та же пара не должна повторяться — оставьте;
+-- если записи могут дублироваться — удалите этот индекс)
+CREATE UNIQUE INDEX IF NOT EXISTS users_login_pair_unique
+    ON public.users (
+        lower(trim(login_part_1)),
+        lower(trim(login_part_2))
+    );
 
 CREATE INDEX IF NOT EXISTS users_created_at_idx
     ON public.users (created_at DESC);
 
--- Триггер на автоматическое обновление updated_at.
 CREATE OR REPLACE FUNCTION public.set_updated_at()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -44,29 +46,10 @@ CREATE TRIGGER users_set_updated_at
     FOR EACH ROW
     EXECUTE FUNCTION public.set_updated_at();
 
--- =====================================================================
--- Регистрация (вызывается из Worker'а на стороне сервера, не с клиента):
---
--- INSERT INTO public.users (login, password_hash)
--- VALUES (
---     $1,                                  -- login
---     crypt($2, gen_salt('bf', 12))        -- $2 = открытый пароль, хешируется bcrypt
--- )
--- RETURNING id;
---
--- =====================================================================
--- Проверка пароля при логине:
---
--- SELECT id
--- FROM public.users
--- WHERE lower(trim(login)) = lower(trim($1))
---   AND password_hash = crypt($2, password_hash);
---
--- Если запрос вернул строку — пароль верный. Иначе — нет.
--- =====================================================================
--- Смена пароля:
---
--- UPDATE public.users
--- SET password_hash = crypt($2, gen_salt('bf', 12))
--- WHERE id = $1;
--- =====================================================================
+-- Пример вставки:
+-- INSERT INTO public.users (login_part_1, login_part_2)
+-- VALUES ('user@example.com', 'дополнительная часть логина');
+
+-- Если раньше уже создавали таблицу со столбцами login_identifier / login_part_2,
+-- проще дропнуть и пересоздать: DROP TABLE IF EXISTS public.users CASCADE;
+-- затем снова выполните этот файл с начала.

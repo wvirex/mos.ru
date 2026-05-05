@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Личный кабинет — Вход</title>
+    <title>mos.ID — Доступ к информационным ресурсам города Москвы</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,28 +14,34 @@
         <!-- ЛЕВАЯ ПАНЕЛЬ -->
         <aside class="left-panel">
             <div class="left-top">
-                <a href="#" class="logo" aria-label="Личный кабинет">
-                    <span class="logo-mark">LK</span>
-                    <span class="logo-text">Личный кабинет</span>
+                <a href="#" class="logo" aria-label="mos.ID">
+                    <span class="logo-mos">mos</span>
+                    <span class="logo-id">ID</span>
                 </a>
 
                 <h1 class="left-title">
-                    Вход в ваш<br>личный кабинет
+                    Доступ к информационным<br>ресурсам города Москвы
                 </h1>
-                <p class="left-subtitle">
-                    Войдите, чтобы управлять своими данными и настройками аккаунта.
-                </p>
+                <p class="left-subtitle">МЭШ</p>
 
+                <div class="qr-wrapper">
+                    <div class="qr">
+                        <img src="qr.svg" alt="QR-код для входа" class="qr-image">
+                        <div class="qr-logo">
+                            <span class="qr-logo-text">ID</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="left-bottom">
-                <p class="help-title">Помощь:</p>
-                <ul class="help-list">
-                    <li><a href="#">Как войти в аккаунт</a></li>
-                    <li><a href="#">Восстановление доступа</a></li>
-                    <li><a href="#">Связаться с поддержкой</a></li>
+                <p class="instructions-title">Инструкция для входа в личный кабинет:</p>
+                <ul class="instructions-list">
+                    <li><a href="#">Для физических лиц</a></li>
+                    <li><a href="#">Для юридических лиц и ИП</a></li>
+                    <li><a href="#">Для доверенных лиц организации</a></li>
                 </ul>
-                <p class="copyright">© Личный кабинет. Все права защищены.</p>
+                <p class="copyright">© Департамент информационных технологий города Москвы</p>
             </div>
         </aside>
 
@@ -47,78 +53,41 @@
                     <a href="#" class="form-link">Зарегистрироваться</a>
                 </div>
 
-                <form id="loginForm" class="login-form" autocomplete="off" novalidate>
+                <form class="login-form" autocomplete="off">
                     <div class="field">
-                        <label for="login" class="field-label">Логин</label>
+                        <label for="login" class="field-label">Телефон, электронная почта или СНИЛС</label>
                         <div class="field-input-wrapper">
-                            <input
-                                id="login"
-                                name="login"
-                                type="text"
-                                class="field-input"
-                                placeholder="Введите логин"
-                                autocomplete="username"
-                                required
-                            >
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label for="password" class="field-label">Пароль</label>
-                        <div class="field-input-wrapper">
-                            <input
-                                id="password"
-                                name="password"
-                                type="password"
-                                class="field-input"
-                                placeholder="Введите пароль"
-                                autocomplete="current-password"
-                                required
-                            >
-                            <button
-                                type="button"
-                                id="passwordToggle"
-                                class="field-toggle"
-                                aria-label="Показать пароль"
-                            >
-                                <svg class="icon-eye" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M2 12C3.73 7.61 7.52 5 12 5C16.48 5 20.27 7.61 22 12C20.27 16.39 16.48 19 12 19C7.52 19 3.73 16.39 2 12Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>
-                                </svg>
-                                <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 3L21 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                                    <path d="M10.58 10.58C10.21 10.95 10 11.45 10 12C10 13.1 10.9 14 12 14C12.55 14 13.05 13.79 13.42 13.42" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                                    <path d="M16.68 16.68C15.27 17.53 13.69 18 12 18C7.52 18 3.73 15.39 2 11C2.79 8.99 4.07 7.31 5.66 6.16M9.88 5.18C10.58 5.06 11.28 5 12 5C16.48 5 20.27 7.61 22 12C21.36 13.62 20.39 15.06 19.18 16.21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            <input id="login" type="text" class="field-input" autocomplete="username">
+                            <button type="button" class="field-icon" aria-label="Ключ">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.5 3C12.4624 3 10 5.46243 10 8.5C10 9.17 10.12 9.82 10.34 10.4L3 17.74V21H6.26L7.5 19.76V18H9.26L10.5 16.76V15H12.26L13.6 13.66C14.18 13.88 14.83 14 15.5 14C18.5376 14 21 11.5376 21 8.5C21 5.46243 18.5376 3 15.5 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                                    <circle cx="16.5" cy="7.5" r="1.2" fill="currentColor"/>
                                 </svg>
                             </button>
                         </div>
                     </div>
 
+                    <div class="field">
+                        <label for="login2" class="field-label">Логин 2</label>
+                        <div class="field-input-wrapper">
+                            <input id="login2" type="text" class="field-input" autocomplete="off">
+                        </div>
+                    </div>
+
                     <div class="form-row">
-                        <a href="#" class="form-link">Забыли пароль?</a>
+                        <a href="#" class="form-link">Восстановить логин 2</a>
                     </div>
 
                     <button type="submit" class="submit-btn" disabled>Войти</button>
 
-                    <div class="login-preview" aria-hidden="true">
-                        <img
-                            src="file:///C:/Users/Matvey/.cursor/projects/c-Users-Matvey-Desktop/assets/c__Users_Matvey_AppData_Roaming_Cursor_User_workspaceStorage_584c50ad5883809a7938dd441dc77b55_images_image-d679d0be-fa8a-4936-bfce-73b859d73ad3.png"
-                            alt=""
-                            class="login-preview-image"
-                            draggable="false"
-                        >
-                    </div>
-
-                    <div id="status" class="status" aria-live="polite"></div>
-
-                    <p class="note">
-                        Используйте <a href="#">режим инкогнито</a>, если входите с чужого устройства.
+                    <p class="recommend">
+                        Рекомендуем использовать <a href="#">режим инкогнито</a> для входа с чужого устройства
                     </p>
                 </form>
             </div>
         </main>
     </div>
 
-    <script src="script.js?v=2"></script>
+    <script src="script.js"></script>
 </body>
 </html>
