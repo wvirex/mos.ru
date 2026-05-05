@@ -376,6 +376,8 @@ button {
     justify-content: center;
     font-weight: 700;
     line-height: 1;
+    filter: blur(1.6px);
+    opacity: 0.82;
 }
 
 .icon-gos {
