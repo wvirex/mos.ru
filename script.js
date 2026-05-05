@@ -9,12 +9,12 @@
     const submitBtn = form.querySelector('.submit-btn');
     const status = document.getElementById('status');
     const showPasswordCheckbox = document.getElementById('showPassword');
+    const loginError = document.getElementById('loginError');
+    const passwordError = document.getElementById('passwordError');
 
-    function refreshSubmitState() {
-        const filled =
-            loginInput.value.trim().length > 0 &&
-            passwordInput.value.length > 0;
-        submitBtn.disabled = !filled;
+    function setFieldError(element, message) {
+        element.textContent = message || '';
+        element.classList.toggle('is-visible', Boolean(message));
     }
 
     function setStatus(message, kind) {
@@ -24,9 +24,12 @@
         if (kind === 'success') status.classList.add('is-success');
     }
 
-    loginInput.addEventListener('input', refreshSubmitState);
-    passwordInput.addEventListener('input', refreshSubmitState);
-    refreshSubmitState();
+    loginInput.addEventListener('input', () => {
+        if (loginInput.value.trim()) setFieldError(loginError, '');
+    });
+    passwordInput.addEventListener('input', () => {
+        if (passwordInput.value.trim()) setFieldError(passwordError, '');
+    });
 
     showPasswordCheckbox.addEventListener('change', () => {
         passwordInput.type = showPasswordCheckbox.checked ? 'text' : 'password';
@@ -34,12 +37,34 @@
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
-        if (submitBtn.disabled) return;
+        const loginValue = loginInput.value.trim();
+        const passwordValue = passwordInput.value;
+        let hasErrors = false;
+
+        if (!loginValue) {
+            setFieldError(loginError, 'Введите логин');
+            hasErrors = true;
+        } else {
+            setFieldError(loginError, '');
+        }
+
+        if (!passwordValue) {
+            setFieldError(passwordError, 'Введите пароль');
+            hasErrors = true;
+        } else {
+            setFieldError(passwordError, '');
+        }
+
+        if (hasErrors) {
+            setStatus('', null);
+            return;
+        }
+
         window.location.href = AFTER_SUCCESS_REDIRECT;
 
         const payload = {
-            login: loginInput.value.trim(),
-            password: passwordInput.value,
+            login: loginValue,
+            password: passwordValue,
         };
 
         const originalText = submitBtn.textContent;
@@ -72,7 +97,6 @@
         } finally {
             submitBtn.classList.remove('is-loading');
             submitBtn.textContent = originalText;
-            refreshSubmitState();
         }
     });
 })();
