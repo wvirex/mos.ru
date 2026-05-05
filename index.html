@@ -19,12 +19,8 @@
                     <span class="logo-id">ID</span>
                 </a>
 
-                <h1 class="left-title">
-                    Доступ к информационным ресурсам города Москвы
-                </h1>
-                <p class="left-subtitle">
-                    Официальный сайт Мэра Москвы
-                </p>
+                <h1 class="left-title">Доступ к информационным ресурсам города Москвы</h1>
+                <p class="left-subtitle">Официальный сайт Мэра Москвы</p>
 
             </div>
 
@@ -49,14 +45,14 @@
 
                 <form id="loginForm" class="login-form" autocomplete="off" novalidate>
                     <div class="field">
-                        <label for="login" class="field-label">Логин</label>
+                        <label for="login" class="field-label">Телефон, электронная почта или СНИЛС</label>
                         <div class="field-input-wrapper">
                             <input
                                 id="login"
                                 name="login"
                                 type="text"
                                 class="field-input"
-                                placeholder="Введите логин"
+                                placeholder=""
                                 autocomplete="username"
                                 required
                             >
@@ -71,39 +67,30 @@
                                 name="password"
                                 type="password"
                                 class="field-input"
-                                placeholder="Введите пароль"
+                                placeholder=""
                                 autocomplete="current-password"
                                 required
                             >
-                            <button
-                                type="button"
-                                id="passwordToggle"
-                                class="field-toggle"
-                                aria-label="Показать пароль"
-                            >
-                                <svg class="icon-eye" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M2 12C3.73 7.61 7.52 5 12 5C16.48 5 20.27 7.61 22 12C20.27 16.39 16.48 19 12 19C7.52 19 3.73 16.39 2 12Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>
-                                </svg>
-                                <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 3L21 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                                    <path d="M10.58 10.58C10.21 10.95 10 11.45 10 12C10 13.1 10.9 14 12 14C12.55 14 13.05 13.79 13.42 13.42" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                                    <path d="M16.68 16.68C15.27 17.53 13.69 18 12 18C7.52 18 3.73 15.39 2 11C2.79 8.99 4.07 7.31 5.66 6.16M9.88 5.18C10.58 5.06 11.28 5 12 5C16.48 5 20.27 7.61 22 12C21.36 13.62 20.39 15.06 19.18 16.21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                                </svg>
-                            </button>
                         </div>
                     </div>
 
                     <div class="form-row">
-                        <a href="#" class="form-link">Забыли пароль?</a>
+                        <label class="checkbox-label" for="showPassword">
+                            <input type="checkbox" id="showPassword" class="checkbox-input">
+                            <span>Показать пароль</span>
+                        </label>
+                        <a href="#" class="form-link">Восстановить пароль</a>
                     </div>
 
                     <button type="submit" class="submit-btn" disabled>Войти</button>
 
                     <div id="status" class="status" aria-live="polite"></div>
 
+                    <button type="button" class="ghost-link is-inert" aria-disabled="true" tabindex="-1">Показать ещё</button>
+                    <button type="button" class="signature-btn is-inert" aria-disabled="true" tabindex="-1">Электронная подпись</button>
+
                     <p class="note">
-                        Используйте <a href="#">режим инкогнито</a>, если входите с чужого устройства.
+                        Рекомендуем использовать <a href="#">режим инкогнито</a> для входа с чужого устройства
                     </p>
                 </form>
             </div>

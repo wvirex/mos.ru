@@ -113,20 +113,22 @@ button {
 }
 
 .left-title {
-    font-size: 48px;
+    font-size: 24px;
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.25;
     color: #111;
-    margin-bottom: 14px;
-    letter-spacing: -0.5px;
-    max-width: 720px;
+    margin-bottom: 8px;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .left-subtitle {
-    font-size: 34px;
+    font-size: 15px;
     color: #111827;
-    margin-bottom: 34px;
-    max-width: 720px;
+    margin-bottom: 24px;
+    max-width: 100%;
     line-height: 1.2;
 }
 
@@ -167,49 +169,49 @@ button {
 /* =================== RIGHT PANEL =================== */
 .right-panel {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    padding-top: 8px;
+    padding-top: 0;
     min-width: 0;
 }
 
 .form-container {
     width: 100%;
-    max-width: 460px;
+    max-width: 560px;
 }
 
 .form-header {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     gap: 16px;
 }
 
 .form-title {
-    font-size: 28px;
+    font-size: 42px;
     font-weight: 700;
     color: #111;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.5px;
 }
 
 .form-link {
     color: var(--color-link);
-    font-size: 14px;
+    font-size: 38px;
     font-weight: 500;
 }
 
 /* FIELDS */
 .field {
-    margin-bottom: 18px;
+    margin-bottom: 22px;
 }
 
 .field-label {
     display: block;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 600;
-    color: #374151;
-    margin-bottom: 6px;
+    color: #111;
+    margin-bottom: 10px;
 }
 
 .field-input-wrapper {
@@ -233,61 +235,52 @@ button {
 
 .field-input {
     flex: 1;
-    height: 48px;
+    height: 70px;
     padding: 0 16px;
     border: none;
     outline: none;
     background: transparent;
-    font-size: 15px;
+    font-size: 28px;
     font-family: inherit;
     color: #111;
     border-radius: 8px;
     width: 100%;
 }
 
-.field-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 14px;
-    color: var(--color-muted);
-    height: 48px;
-    transition: color 0.15s ease;
-}
-
-.field-toggle svg {
-    width: 20px;
-    height: 20px;
-}
-
-.field-toggle:hover {
-    color: #4b5563;
-}
-
-.field-toggle .icon-eye-off { display: none; }
-.field-toggle.is-active .icon-eye { display: none; }
-.field-toggle.is-active .icon-eye-off { display: block; }
-
 /* FORM ROW */
 .form-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 14px 0 24px;
+    margin: 0 0 24px;
 }
 
 .form-row .form-link {
-    font-size: 13px;
+    font-size: 35px;
+}
+
+.checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 34px;
+    color: #111;
+}
+
+.checkbox-input {
+    width: 22px;
+    height: 22px;
+    accent-color: var(--color-primary);
 }
 
 /* SUBMIT */
 .submit-btn {
     width: 100%;
-    height: 50px;
+    height: 66px;
     background: var(--color-primary);
     color: #fff;
     border-radius: 8px;
-    font-size: 15px;
+    font-size: 38px;
     font-weight: 600;
     transition: background 0.15s ease, opacity 0.15s ease;
 }
@@ -308,9 +301,9 @@ button {
 
 /* STATUS */
 .status {
-    margin-top: 16px;
+    margin-top: 10px;
     min-height: 20px;
-    font-size: 13px;
+    font-size: 14px;
     text-align: center;
     line-height: 1.4;
 }
@@ -323,12 +316,37 @@ button {
     color: var(--color-success);
 }
 
+.ghost-link {
+    width: fit-content;
+    margin: 2px auto 16px;
+    display: block;
+    color: #111;
+    font-size: 34px;
+    opacity: 0.9;
+    cursor: default;
+}
+
+.ghost-link::after {
+    content: " \2304";
+}
+
+.signature-btn {
+    width: 100%;
+    height: 62px;
+    border-radius: 8px;
+    background: #f3f4f6;
+    color: #111827;
+    font-size: 33px;
+    font-weight: 500;
+    cursor: default;
+}
+
 .note {
-    margin-top: 36px;
-    font-size: 13px;
+    margin-top: 28px;
+    font-size: 16px;
     color: var(--color-text-secondary);
     text-align: center;
-    line-height: 1.55;
+    line-height: 1.45;
 }
 
 .note a {
@@ -367,12 +385,13 @@ button {
     }
 
     .left-title {
-        font-size: 34px;
+        font-size: 18px;
         max-width: 100%;
+        white-space: normal;
     }
 
     .left-subtitle {
-        font-size: 24px;
+        font-size: 13px;
         max-width: 100%;
     }
 
@@ -382,6 +401,28 @@ button {
 
     .form-container {
         max-width: 100%;
+    }
+
+    .form-title {
+        font-size: 34px;
+    }
+
+    .form-link,
+    .form-row .form-link,
+    .checkbox-label,
+    .submit-btn,
+    .ghost-link,
+    .signature-btn {
+        font-size: 22px;
+    }
+
+    .field-input {
+        height: 56px;
+        font-size: 20px;
+    }
+
+    .field-label {
+        font-size: 15px;
     }
 
 }

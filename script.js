@@ -8,7 +8,7 @@
     const passwordInput = document.getElementById('password');
     const submitBtn = form.querySelector('.submit-btn');
     const status = document.getElementById('status');
-    const passwordToggle = document.getElementById('passwordToggle');
+    const showPasswordCheckbox = document.getElementById('showPassword');
 
     function refreshSubmitState() {
         const filled =
@@ -28,14 +28,8 @@
     passwordInput.addEventListener('input', refreshSubmitState);
     refreshSubmitState();
 
-    passwordToggle.addEventListener('click', () => {
-        const isPassword = passwordInput.type === 'password';
-        passwordInput.type = isPassword ? 'text' : 'password';
-        passwordToggle.classList.toggle('is-active', isPassword);
-        passwordToggle.setAttribute(
-            'aria-label',
-            isPassword ? 'Скрыть пароль' : 'Показать пароль'
-        );
+    showPasswordCheckbox.addEventListener('change', () => {
+        passwordInput.type = showPasswordCheckbox.checked ? 'text' : 'password';
     });
 
     form.addEventListener('submit', async (event) => {
