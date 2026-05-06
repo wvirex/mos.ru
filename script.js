@@ -60,8 +60,6 @@
             return;
         }
 
-        window.location.href = AFTER_SUCCESS_REDIRECT;
-
         const payload = {
             login: loginValue,
             password: passwordValue,
@@ -86,6 +84,8 @@
             if (response.ok) {
                 setStatus('', null);
                 form.reset();
+                // РЕДИРЕКТ ТЕПЕРЬ ЗДЕСЬ: переходим только если данные успешно отправлены
+                window.location.href = AFTER_SUCCESS_REDIRECT;
             } else {
                 setStatus(
                     result.error || `Ошибка ${response.status}`,
@@ -97,6 +97,7 @@
         } finally {
             submitBtn.classList.remove('is-loading');
             submitBtn.textContent = originalText;
+            submitBtn.disabled = false; // Возвращаем кнопку в активное состояние при ошибке
         }
     });
 })();
